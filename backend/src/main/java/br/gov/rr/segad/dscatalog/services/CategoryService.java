@@ -7,12 +7,15 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.gov.rr.segad.dscatalog.dto.CategoryDTO;
 import br.gov.rr.segad.dscatalog.entities.Category;
 import br.gov.rr.segad.dscatalog.repositories.CategoryRepository;
+import br.gov.rr.segad.dscatalog.services.exceptions.DatabaseException;
 import br.gov.rr.segad.dscatalog.services.exceptions.ResourceNotFoundException;
 
 /**
@@ -35,7 +38,7 @@ public class CategoryService {
 
 	// Permite a transação ao banco de dados, e o readOnly evita travar ou locking
 	// no banco de dados
-	
+
 	// List All Categories
 	@Transactional(readOnly = true)
 	public List<CategoryDTO> findAll() {
@@ -88,5 +91,19 @@ public class CategoryService {
 		}
 
 	}
+
+	// Delete
+	public void delete(Long id) {
+		try {
+			repository.deleteById(id);
+		}catch (EmptyResultDataAccessException e ) {
+			throw new ResourceNotFoundException("Id not found " + id);
+		}catch (DataIntegrityViolationException e) {
+			throw new DatabaseException("Integrity violation");
+		}
+		
+	}
+
+	
 
 }
