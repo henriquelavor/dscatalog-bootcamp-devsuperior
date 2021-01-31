@@ -1,6 +1,7 @@
 package br.gov.rr.segad.dscatalog.dto;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 import br.gov.rr.segad.dscatalog.entities.Category;
 
@@ -10,6 +11,7 @@ public class CategoryDTO implements Serializable{
 	
 	private Long id;
 	private String name;
+	private Instant createdAt;
 	
 	public CategoryDTO() {
 		
@@ -24,6 +26,7 @@ public class CategoryDTO implements Serializable{
 	public CategoryDTO(Category entity) {
 		this.id = entity.getId();
 		this.name = entity.getName();
+		this.createdAt = entity.getCreatedAt();
 	}
 
 	public Long getId() {
@@ -41,6 +44,17 @@ public class CategoryDTO implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Instant getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Instant createdAt) {
+		this.createdAt = createdAt;
+	}
+	
+	
+	
 	
 	
 }
