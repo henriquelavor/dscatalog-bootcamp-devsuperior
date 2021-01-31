@@ -1,6 +1,7 @@
 package br.gov.rr.segad.dscatalog.services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,13 @@ public class CategoryService {
 		 * cat : list) { listDto.add(new CategoryDTO(cat)); } return listDto;
 		 */
 
+	}
+
+	@Transactional(readOnly = true)
+	public CategoryDTO findById(Long id) {
+		Optional<Category> objeto = repository.findById(id);
+		Category entity = objeto.get(); //obtem o objeto do Optional, neste caso Category
+		return new CategoryDTO(entity);
 	}
 
 }
