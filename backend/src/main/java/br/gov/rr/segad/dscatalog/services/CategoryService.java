@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.gov.rr.segad.dscatalog.dto.CategoryDTO;
 import br.gov.rr.segad.dscatalog.entities.Category;
 import br.gov.rr.segad.dscatalog.repositories.CategoryRepository;
+import br.gov.rr.segad.dscatalog.services.exceptions.EntityNotFoundException;
 
 /**
  * A notação @Service Registra a classe CategoryService como um componente que
@@ -54,7 +55,8 @@ public class CategoryService {
 	@Transactional(readOnly = true)
 	public CategoryDTO findById(Long id) {
 		Optional<Category> objeto = repository.findById(id);
-		Category entity = objeto.get(); //obtem o objeto do Optional, neste caso Category
+		//Category entity = objeto.get(); //obtem o objeto do Optional, neste caso Category
+		Category entity = objeto.orElseThrow(()-> new EntityNotFoundException("Entity not found!")); 
 		return new CategoryDTO(entity);
 	}
 
