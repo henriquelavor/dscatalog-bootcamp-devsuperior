@@ -1,14 +1,14 @@
 package br.gov.rr.segad.dscatalog.services;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,10 +36,18 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository repository;
 
-	// Permite a transação ao banco de dados, e o readOnly evita travar ou locking
-	// no banco de dados
-
 	// List All Categories
+	// versão 2.0
+	public Page<CategoryDTO> findAllPaged(PageRequest pageRequest) {
+		Page<Category> list = repository.findAll(pageRequest);
+		return list.map(x -> new CategoryDTO(x));
+	}
+	
+	/**
+	/ Permite a transação ao banco de dados, e o readOnly evita travar ou locking
+	// no banco de dados
+	// List All Categories
+	// versão 1.0
 	@Transactional(readOnly = true)
 	public List<CategoryDTO> findAll() {
 		List<Category> list = repository.findAll(); // Lembrar que o Repository trabalha com Entidade
@@ -51,13 +59,14 @@ public class CategoryService {
 		// Ou seja transformando uma Lista Category para uma Lista Category DTO
 		return list.stream().map(x -> new CategoryDTO(x)).collect(Collectors.toList());
 
+	 */
 		/**
 		 * Opcao 2: Funcao que converter a Lista da entidade Category em lista de
 		 * Categoria DTO List<CategoryDTO> listDto = new ArrayList<>(); for (Category
 		 * cat : list) { listDto.add(new CategoryDTO(cat)); } return listDto;
 		 */
 
-	}
+	
 
 	// Find by Id Category
 	@Transactional(readOnly = true)
@@ -103,7 +112,5 @@ public class CategoryService {
 		}
 		
 	}
-
-	
 
 }

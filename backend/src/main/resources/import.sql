@@ -1,4 +1,30 @@
-INSERT INTO tb_category(name, created_At) VALUES('Books', NOW());
-INSERT INTO tb_category(name, created_At) VALUES('Electronics', NOW());
-INSERT INTO tb_category(name, created_At) VALUES('Computers', NOW());
-  
+INSERT INTO tb_category(name, created_At) VALUES('Livros', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Eletrônicos', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Computadores', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Bolsas', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Óculos', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Mochilas', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Perfumes', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Sandálias', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Roupas Masculinas', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Roupas Femininas', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Pneus', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Automação Residencial', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Quadros', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Som', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Acessórios para Celular', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Celulares', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Smartphones', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Tablets', NOW());
+
+INSERT INTO tb_category(name, created_At) VALUES('Cabos', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Carregadores', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('TVBOX', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Guarda-Chuva', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Belza', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Bijuterias', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Câmera de Vigilância', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Câmera IP', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Tênis', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Ventiladores', NOW());
+INSERT INTO tb_category(name, created_At) VALUES('Material Hospitalar', NOW());
