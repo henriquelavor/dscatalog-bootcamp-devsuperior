@@ -12,11 +12,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
-import org.hibernate.envers.Audited;
-
 @Entity
 @Table(name = "tb_category")
-@Audited
 public class Category implements Serializable {
 
 	private static final long serialVersionUID = 1L;
